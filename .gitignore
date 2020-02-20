@@ -1,4 +1,6 @@
+build/
+dist/
+*.egg*/
+env/
 .idea/
 __pycache__/
-env/
-*.egg*/
