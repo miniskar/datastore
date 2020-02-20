@@ -49,6 +49,47 @@ def save_pickle(filename, data, override=True):
     return filename
 
 
+def read_or_new_txt(filename, value, *args, **kwargs):
+    """Read or create a new text file and return the data."""
+    data = None
+    filename = "{}.txt".format(filename)
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
+
+    if os.path.isfile(filename):
+        # If file had been created, but is empty return None since another process
+        # could be writing to it.
+        if os.path.getsize(filename) > 0:
+            with open(filename, "r") as f:
+                try:
+                    data = f.read()
+                except Exception as e:
+                    print(e)
+                    raise e
+    else:
+        # open(filename, "ab").close()
+        if callable(value):
+            data = value(*args, **kwargs)
+        else:
+            data = value
+        with open(filename, "w") as f:
+            f.write(data)
+    return data
+
+
+def save_txt(filename, data, override=True):
+    """Save data to a text file."""
+    filename = "{}.txt".format(filename)
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
+
+    if override == False:
+        filename = add_unique_postfix(filename)
+
+    with open(filename, "w") as f:
+        f.write(data)
+
+    return filename
+
+
 def read_or_new_json(filename, value, *args, **kwargs):
     """Read or create a new json file and return the data."""
     data = None
