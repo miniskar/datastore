@@ -1,5 +1,6 @@
 from .bunch import Bunch
 
+from .datastore import execute_if_missing
 from .datastore import read_or_new_pickle
 from .datastore import save_pickle
 from .datastore import read_or_new_txt

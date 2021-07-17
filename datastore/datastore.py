@@ -7,6 +7,11 @@ import json_tricks as json
 import os
 import sys
 
+def execute_if_missing(filename, function, *args, **kwargs):
+    """Execute method if output file is missing."""
+    if not os.path.exists(filename):
+        function(*args, **kwargs)
+
 
 def read_or_new_pickle(filename, value, *args, **kwargs):
     """Read or create a new pickle file and return the data."""
@@ -160,7 +165,10 @@ def read_all_data_from_folder(path):
             name, ext = os.path.splitext(filename)
 
             filepath = os.path.join(foldername, filename)
-            if ext == '.json':
+            if ext == '.txt':
+                with open(filepath, "r") as f:
+                    data.append(f.readlines())
+            elif ext == '.json':
                 with open(filepath, "r") as f:
                     data.append(json.load(f, preserve_order=False))
             elif ext == '.pkl':
