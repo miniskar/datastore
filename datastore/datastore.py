@@ -17,7 +17,9 @@ def read_or_new_pickle(filename, value, *args, **kwargs):
     """Read or create a new pickle file and return the data."""
     data = None
     filename = "{}.pkl".format(filename)
-    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    dirname = os.path.dirname(filename)
+    if dirname:
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
 
     if os.path.isfile(filename):
         # If file had been created, but is empty return None since another process
@@ -43,7 +45,9 @@ def read_or_new_pickle(filename, value, *args, **kwargs):
 def save_pickle(filename, data, override=True):
     """Save data to a pickle."""
     filename = "{}.pkl".format(filename)
-    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    dirname = os.path.dirname(filename)
+    if dirname:
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
 
     if override == False:
         filename = add_unique_postfix(filename)
@@ -58,7 +62,9 @@ def read_or_new_txt(filename, value, *args, **kwargs):
     """Read or create a new text file and return the data."""
     data = None
     filename = "{}.txt".format(filename)
-    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    dirname = os.path.dirname(filename)
+    if dirname:
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
 
     if os.path.isfile(filename):
         # If file had been created, but is empty return None since another process
@@ -84,7 +90,9 @@ def read_or_new_txt(filename, value, *args, **kwargs):
 def save_txt(filename, data, override=True):
     """Save data to a text file."""
     filename = "{}.txt".format(filename)
-    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    dirname = os.path.dirname(filename)
+    if dirname:
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
 
     if override == False:
         filename = add_unique_postfix(filename)
@@ -99,7 +107,9 @@ def read_or_new_json(filename, value, *args, **kwargs):
     """Read or create a new json file and return the data."""
     data = None
     filename = "{}.json".format(filename)
-    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    dirname = os.path.dirname(filename)
+    if dirname:
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
 
     if os.path.isfile(filename):
         # If file had been created, but is empty return None since another process
@@ -124,7 +134,9 @@ def read_or_new_json(filename, value, *args, **kwargs):
 def save_json(filename, data, override=True):
     """Save data to a json."""
     filename ="{}.json".format(filename)
-    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    dirname = os.path.dirname(filename)
+    if dirname:
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
 
     if override == False:
         filename = add_unique_postfix(filename)
