@@ -7,6 +7,11 @@ import json_tricks as json
 import os
 import sys
 
+def add_extension(path, ext):
+    if not os.path.splitext(path)[1] == ext:
+        path += ext
+    return path
+
 def execute_if_missing(filename, function, *args, **kwargs):
     """Execute method if output file is missing."""
     if not os.path.exists(filename):
@@ -16,7 +21,7 @@ def execute_if_missing(filename, function, *args, **kwargs):
 def read_or_new_pickle(filename, value, *args, **kwargs):
     """Read or create a new pickle file and return the data."""
     data = None
-    filename = "{}.pkl".format(filename)
+    filename = add_extension(filename, '.pkl')
     dirname = os.path.dirname(filename)
     if dirname:
         os.makedirs(os.path.dirname(filename), exist_ok=True)
@@ -44,7 +49,7 @@ def read_or_new_pickle(filename, value, *args, **kwargs):
 
 def save_pickle(filename, data, override=True):
     """Save data to a pickle."""
-    filename = "{}.pkl".format(filename)
+    filename = add_extension(filename, '.pkl')
     dirname = os.path.dirname(filename)
     if dirname:
         os.makedirs(os.path.dirname(filename), exist_ok=True)
@@ -61,7 +66,7 @@ def save_pickle(filename, data, override=True):
 def read_or_new_txt(filename, value, *args, **kwargs):
     """Read or create a new text file and return the data."""
     data = None
-    filename = "{}.txt".format(filename)
+    filename = add_extension(filename, '.txt')
     dirname = os.path.dirname(filename)
     if dirname:
         os.makedirs(os.path.dirname(filename), exist_ok=True)
@@ -89,7 +94,7 @@ def read_or_new_txt(filename, value, *args, **kwargs):
 
 def save_txt(filename, data, override=True):
     """Save data to a text file."""
-    filename = "{}.txt".format(filename)
+    filename = add_extension(filename, '.txt')
     dirname = os.path.dirname(filename)
     if dirname:
         os.makedirs(os.path.dirname(filename), exist_ok=True)
@@ -106,7 +111,7 @@ def save_txt(filename, data, override=True):
 def read_or_new_json(filename, value, *args, **kwargs):
     """Read or create a new json file and return the data."""
     data = None
-    filename = "{}.json".format(filename)
+    filename = add_extension(filename, '.json')
     dirname = os.path.dirname(filename)
     if dirname:
         os.makedirs(os.path.dirname(filename), exist_ok=True)
@@ -133,7 +138,7 @@ def read_or_new_json(filename, value, *args, **kwargs):
 
 def save_json(filename, data, override=True):
     """Save data to a json."""
-    filename ="{}.json".format(filename)
+    filename = add_extension(filename, '.json')
     dirname = os.path.dirname(filename)
     if dirname:
         os.makedirs(os.path.dirname(filename), exist_ok=True)
