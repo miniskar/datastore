@@ -1,3 +1,7 @@
+This repository is imported from https://bitbucket.org/Geekdude/datastore
+All credits goes to original Author: Aaron Young. 
+
+
 Container object for datasets
 
 Dictionary-like object that exposes its keys as attributes.
