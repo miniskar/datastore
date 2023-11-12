@@ -1,5 +1,6 @@
 This repository is imported from https://bitbucket.org/Geekdude/datastore
-All credits goes to original Author: Aaron Young. 
+
+All credits goes to original Author: Aaron Young (https://github.com/Geekdude)
 
 
 Container object for datasets
